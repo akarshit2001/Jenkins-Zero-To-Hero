@@ -54,6 +54,7 @@ stage('Update Deployment File') {
     withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
       dir('.') {   // 👈 IMPORTANT: workspace root where repo was cloned
         sh '''
+          git config --global --add safe.directory /var/lib/jenkins/workspace/cicd-demo
           git status
 
           git config user.email "akarshitsrivastava33@gmail.com"
